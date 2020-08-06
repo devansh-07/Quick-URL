@@ -43,7 +43,7 @@ def home():
             mycursor = cursorObj.execute("INSERT INTO urls(URL) VALUES('{}')".format(givenUrl))
             con.commit()
             short_url = base62enc(mycursor.lastrowid)
-            return render_template('home.html', newurl='http://127.0.0.1:5000/'+str(short_url))
+            return render_template('home.html', newurl='https://url-engine.herokuapp.com/'+str(short_url))
         except:
             return render_template('home.html')
     return render_template('home.html')
