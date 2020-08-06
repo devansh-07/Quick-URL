@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+          body{
+            background-image: url({{ url_for('static', filename='img/bg3.jpg') }});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+          }
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>My App</title>
+    </head>
+    <body>
+        <br>
+        <h1 class="text-center text-warning">Welcome to MiniUrl</h1>
+        <br>
+        <br>
+        <div class="container text-center">
+            <form method="post" action="">
+                <input type="text", id="url", name="url", class="form-control", placeholder="Enter URL here"/>
+                <br/>
+                <button type="submit", class="btn btn-lg btn-info">Submit</button>
+            </form>
+            <br>
+            {% if newurl %}
+                <h4 class="text-center text-white">Shortened URL is <a href={{ newurl }}>{{ newurl }}</a></h4>
+            {% endif %}
+        </div>
+    </body>
+</html>
