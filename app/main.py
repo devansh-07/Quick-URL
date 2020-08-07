@@ -18,7 +18,7 @@ def base62dec(s, b=62):
     for i, v in enumerate(s[::-1]):
         n += (vals.index(v))*(b**i)
     return n
-    
+
 #######
 
 def create_table():
@@ -37,6 +37,8 @@ app = Flask(__name__)
 def home():
     if request.method == 'POST':
         givenUrl = request.form.get('url')
+        if givenUrl.strip() == '':
+            return render_template('home.html', empty=True)
         con = sqlite3.connect('app/urlDetails.db')
         cursorObj = con.cursor()
         try:
@@ -45,7 +47,7 @@ def home():
             short_url = base62enc(mycursor.lastrowid)
             return render_template('home.html', newurl='https://url-engine.herokuapp.com/'+str(short_url))
         except:
-            return render_template('home.html')
+            return render_template('home.html', err=True)
     return render_template('home.html')
 
 @app.route('/<url>')
@@ -62,4 +64,3 @@ def newpage(url):
         org_url = "http://" + org_url
 
     return redirect(org_url)
-

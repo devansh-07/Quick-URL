@@ -2,9 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
         <style>
           body{
-            background-image: url({{ url_for('static', filename='img/bg3.jpg') }});
+            background-image: url({{ url_for('static', filename='img/newbg.jpg') }});
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -20,18 +21,46 @@
         <br>
         <h1 class="text-center text-warning">Welcome to URL Engine</h1>
         <br>
-        <br>
         <div class="container text-center">
             <form method="post" action="">
-                <input type="text", id="url", name="url", class="form-control", placeholder="Enter URL here"/>
-                <br/>
-                <button type="submit", class="btn btn-lg btn-info">Shorten</button>
+                <input type="text", id="url", name="url", style="float: left;", class="form-control col-lg-10 mt-4", placeholder="Enter URL here"/>
+                <button type="submit", class="btn btn-lg btn-info mt-4", style="line-height: 21px;">Shorten</button>
             </form>
             <br>
-	    <br>
+	        <br>
             {% if newurl %}
                 <h4 class="text-center text-white">Shortened URL: <a href={{ newurl }}>{{ newurl }}</a></h4>
             {% endif %}
+
+            {% if empty %}
+                <h4 class="text-center text-danger">Enter something in TextBox!</h4>
+            {% endif %}
+
+            {% if err %}
+                <h4 class="text-center text-danger">An Error occured!</h4>
+            {% endif %}
+        </div>
+        <div class="fixed-bottom text-center text-primary pb-1 pr-3 pl-3">
+            <h6 class="text-muted">
+                <img src="{{ url_for('static', filename='img/mail_icon1.png') }}"  width="40" height="40", class="mr-1">
+                sonidev0201@gmail.com
+                <img src="{{ url_for('static', filename='img/call_icon1.png') }}"  width="40" height="40", class="mr-1 ml-2">
+                +91 6266392595
+            </h6>
+            <h6>
+            <a href="https://www.instagram.com/dsoni_01/">
+                <img src="{{ url_for('static', filename='img/ig_icon1.png') }}"  width="40" height="40", class="mr-1">
+            </a>
+            <a href="https://www.linkedin.com/in/devansh-soni-4129171a9/">
+                <img src="{{ url_for('static', filename='img/linkedin_icon11.png') }}"  width="40" height="40", class="mr-1">
+            </a>
+            <a href="https://github.com/devansh-07">
+                <img src="{{ url_for('static', filename='img/github_icon12.png') }}"  width="40" height="40", class="mr-1">
+            </a>
+            <a href="https://stackoverflow.com/users/12566054/devansh-soni">
+                <img src="{{ url_for('static', filename='img/sof_icon1.png') }}"  width="40" height="40", class="mr-1">
+            </a>
+            </h6>
         </div>
     </body>
 </html>
