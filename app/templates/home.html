@@ -2,65 +2,77 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon0.ico') }}">
-        <style>
-          body{
-            background-image: url({{ url_for('static', filename='img/bg.jpg') }});
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-          }
-
-        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <title>URL Engine</title>
+        <link rel="icon" href="static/img/icon.png">
+
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon0.ico') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Home | URL Engine</title>
     </head>
-    <body>
-        <br>
-        <h1 class="text-center text-warning">Welcome to URL Engine</h1>
-        <br>
-        <div class="container text-center">
+    <body style="background-color: #171717;">
+
+        <!-- NavBar Start -->
+        <nav class="navbar navbar-expand-lg navbar-dark navcustom" style="font-family: 'Exo 2', sans-serif;">
+            <a class="navbar-brand text-info py-0 pb-1" style="font-size: 22px;" href="home">URL Engine</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Work Sans', sans-serif; font-size: 16px;">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link mr-3 active" href="home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-3" href="contact">Contact Me</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr class="w-100 my-0 bg-info">
+
+        <!-- NavBar End -->
+
+
+        <h1 class="text-center text-info my-5" style="font-family: 'Exo 2', sans-serif; font-size: 42px;">Welcome to URL Engine</h1>
+
+        <div class="container text-center my-5">
             <form method="post" action="">
-                <input type="text", id="url", name="url", style="float: left;", class="form-control col-lg-10 mt-4", placeholder="Enter URL here"/>
-                <button type="submit", class="btn btn-lg btn-info mt-4", style="line-height: 21px;">Shorten</button>
+                <input type="text" id="url" name="url" style="font-family: 'Work Sans', sans-serif; float: left; background-color: #f0f0f0; font-weight: bold;" class="form-control col-lg-10 my-4", placeholder="Enter URL here"/>
+                <button id="submit" type="submit" class="btn btn-outline-danger my-4 disabled" style="font-family: 'Work Sans', sans-serif; line-height: 24px;">Shorten</button>
             </form>
-            <br>
-	        <br>
-            {% if newurl %}
-                <h4 class="text-center text-white">Shortened URL: <a href={{ newurl }}>{{ newurl }}</a></h4>
-            {% endif %}
 
-            {% if empty %}
-                <h4 class="text-center text-danger">Enter something in TextBox!</h4>
-            {% endif %}
+            <div class="my-5" style="font-family: 'Work Sans', sans-serif;">
+                {% if newurl %}
+                    <h4 class="text-center" style="color: #d0d0d0;">Shortened URL: <a href={{ newurl }} style="text-decoration: none; ">{{ newurl[8:] }}</a></h4>
+                {% endif %}
 
-            {% if err %}
-                <h4 class="text-center text-danger">An Error occured!</h4>
-            {% endif %}
+                {% if empty %}
+                    <h4 class="text-center text-danger">Enter something in TextBox!</h4>
+                {% endif %}
+
+                {% if err %}
+                    <h4 class="text-center text-danger">An Error occured!</h4>
+                {% endif %}
+            </div>
         </div>
-        <div class="fixed-bottom text-center text-primary pb-1 pr-3 pl-3">
-            <h6 class="text-muted">
-                <img src="{{ url_for('static', filename='img/mail_icon.png') }}"  width="40" height="40", class="mr-1">
-                sonidev0201@gmail.com
-                <img src="{{ url_for('static', filename='img/call_icon.png') }}"  width="40" height="40", class="mr-1 ml-2">
-                +91 6266392595
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+
+        <footer class="fixed-bottom p-0 text-white" style="background-color: #141414;">
+            <hr class="w-100 my-0 bg-info text-center">
+
+            <h6 class="py-1 my-auto text-center" style="font-family: 'Work Sans', sans-serif; font-size: 12px;">
+            Made with ❤️ by <span style="color: orange;">De</span><span class="text-white">van</span><span class="text-success">sh</span>
             </h6>
-            <h6>
-            <a href="https://www.instagram.com/dsoni_01/">
-                <img src="{{ url_for('static', filename='img/ig_icon.png') }}"  width="40" height="40", class="mr-1">
-            </a>
-            <a href="https://www.linkedin.com/in/devansh-soni-4129171a9/">
-                <img src="{{ url_for('static', filename='img/linkedin_icon.png') }}"  width="40" height="40", class="mr-1">
-            </a>
-            <a href="https://github.com/devansh-07">
-                <img src="{{ url_for('static', filename='img/github_icon.png') }}"  width="40" height="40", class="mr-1">
-            </a>
-            <a href="https://stackoverflow.com/users/12566054/devansh-soni">
-                <img src="{{ url_for('static', filename='img/sof_icon.png') }}"  width="40" height="40", class="mr-1">
-            </a>
-            </h6>
-        </div>
+        </footer>
     </body>
 </html>

@@ -50,6 +50,10 @@ def home():
             return render_template('home.html', err=True)
     return render_template('home.html')
 
+@app.route('/contact')
+def contact_me():
+    return render_template('contact.html')
+
 @app.route('/<url>')
 def newpage(url):
     idx = base62dec(url)
